@@ -1,4 +1,5 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.Domain.Entities;
+using ECommerce.Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers;
@@ -9,9 +10,9 @@ public class ProductsController : ControllerBase
 {
     private readonly List<Product> products = new()
     {
-        new Product { Id = 1, Name = "Teclado", Price = 49.99m },
-        new Product { Id = 2, Name = "Rato", Price = 19.99m },
-        new Product { Id = 3, Name = "Monitor", Price = 199.99m }
+        new Product("Teclado", new Money(49.99m, "USD"), 10),
+        new Product("Rato", new Money(19.99m, "USD"),5),
+        new Product("Monitor", new Money(199.99m, "USD"),2)
     };
     
     [HttpGet]
