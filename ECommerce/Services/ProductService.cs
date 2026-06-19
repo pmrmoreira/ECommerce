@@ -15,17 +15,28 @@ public class ProductService : IProductService
         _db = db;
     }
 
-    public async Task<List<Product>> GetAllAsync() 
+    public async Task<List<ProductResponse>> GetAllAsync()
     {
         var data = await _db.Products.ToListAsync();
-        return data;
+        return data.Select(p => new ProductResponse(
+            p.Id,
+            p.Name,
+            p.Price.Amount,
+            p.Price.Currency,
+            p.StockQuantity
+        )).ToList();
     }
-    public async Task<Product?> GetByIdAsync(int id)
+    public async Task<ProductResponse?> GetByIdAsync(int id)
     {
         var data = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
-        
-        return data;
-
+        if (data is null) return null;
+        return new ProductResponse(
+            data.Id,
+            data.Name,
+            data.Price.Amount,
+            data.Price.Currency,
+            data.StockQuantity
+        );
     }
     public async Task<bool> SeedAsync()
     {
@@ -37,11 +48,17 @@ public class ProductService : IProductService
         await _db.SaveChangesAsync();
         return true;
     }
-    public async Task<Product> CreateAsync(CreateProductRequest req)
+    public async Task<ProductResponse> CreateAsync(CreateProductRequest req)
     {
         var produto = new Product(req.Name, new Money(req.Price, req.Currency), req.StockQuantity);
         _db.Products.Add(produto);
         await _db.SaveChangesAsync();
-        return produto;  
+        return new ProductResponse(
+            produto.Id,
+            produto.Name,
+            produto.Price.Amount,
+            produto.Price.Currency,
+            produto.StockQuantity
+        );
     }
 }

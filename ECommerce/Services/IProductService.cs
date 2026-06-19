@@ -7,8 +7,8 @@ namespace ECommerce.Services;
 
 
 public interface IProductService {
-    Task <List<Product>> GetAllAsync();
-    Task<Product?> GetByIdAsync(int id);
+    Task <List<ProductResponse>> GetAllAsync();
+    Task<ProductResponse?> GetByIdAsync(int id);
     Task<bool> SeedAsync();
-    Task<Product> CreateAsync(CreateProductRequest req);
+    Task<ProductResponse> CreateAsync(CreateProductRequest req);
 }
