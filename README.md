@@ -69,8 +69,8 @@ dotnet run
 - [x] Domain Layer (Product, Money, DomainException)
 - [x] Persistence (EF Core + PostgreSQL)
 - [x] Service Layer (IProductService)
-- [ ] DTOs de resposta
-- [ ] Entidade Order
+- [X] DTOs de resposta
+- [X] Entidade Order
 - [ ] Repository Pattern
 - [ ] Autenticação JWT
 - [ ] Tratamento de erros global
