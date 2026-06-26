@@ -1,5 +1,6 @@
 ﻿using ECommerce.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace ECommerce.Persistence;
 
@@ -11,6 +12,10 @@ public class ApplicationDbContext : DbContext
 
 
     public DbSet<Product> Products => Set<Product>();
+    public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
