@@ -1,3 +1,4 @@
+using ECommerce.Middleware;
 using ECommerce.Persistence;
 using ECommerce.Persistence.Repositories;
 using ECommerce.Services;
@@ -26,7 +27,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
