@@ -1,6 +1,8 @@
 using ECommerce.Persistence;
-using Microsoft.EntityFrameworkCore;
+using ECommerce.Persistence.Repositories;
 using ECommerce.Services;
+using Microsoft.EntityFrameworkCore;
+ 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
