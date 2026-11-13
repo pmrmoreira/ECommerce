@@ -6,7 +6,7 @@ public class OrderItem : BaseEntity
 {
     public int ProductId { get; private set; }
     public int Quantity { get; private set; }
-    public Money? UnitPrice { get; private set; }
+    public Money UnitPrice { get; private set; } = default!;
 
     private OrderItem() { }
 

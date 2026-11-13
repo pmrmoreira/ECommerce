@@ -1,6 +1,4 @@
-﻿using ECommerce.Domain.Entities;
-using ECommerce.Domain.ValueObjects;
-using ECommerce.Models;
+﻿using ECommerce.Models;
 using ECommerce.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

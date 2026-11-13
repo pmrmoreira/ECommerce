@@ -17,7 +17,7 @@ namespace ECommerce.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "10.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -143,7 +143,8 @@ namespace ECommerce.Migrations
                                 .HasForeignKey("OrderItemId");
                         });
 
-                    b.Navigation("UnitPrice");
+                    b.Navigation("UnitPrice")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ECommerce.Domain.Entities.Product", b =>

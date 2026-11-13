@@ -5,9 +5,9 @@ namespace ECommerce.Domain.Entities;
 
 public class User : BaseEntity
 {
-    
-    public string Email { get; private set; }
-    public string PasswordHash { get; private set; }
+
+    public string Email { get; private set; } = default!;
+    public string PasswordHash { get; private set; } = default!;
 
     public User(string email, string passwordHash)
     {
